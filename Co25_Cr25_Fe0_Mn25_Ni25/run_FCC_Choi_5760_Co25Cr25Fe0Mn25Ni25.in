@@ -1,0 +1,120 @@
+clear
+units metal
+dimension 3
+boundary p p p
+atom_style atomic
+timestep 0.001
+
+# 5760-atom FCC cell: 4 x 12 x 12 x 10
+lattice fcc 3.595
+region simbox block 0 12 0 12 0 10 units lattice
+create_box 5 simbox
+create_atoms 1 box
+
+# Atom-type mapping remains identical to the previous Co-Cr-Fe-Mn-Ni workflow:
+# type 1 = Co, type 2 = Cr, type 3 = Fe, type 4 = Mn, type 5 = Ni
+mass 1 58.933194
+mass 2 51.996100
+mass 3 55.845000
+mass 4 54.938044
+mass 5 58.693400
+
+# Target composition: Co25 Cr25 Fe0 Mn25 Ni25 = 5760 atoms
+# Co=1440, Cr=1440, Fe=0, Mn=1440, Ni=1440
+# All atoms begin as Co. Three exact subsets are converted below;
+# 1440 type-1 atoms remain Co and no type-3 (Fe) atoms are created.
+set type 1 type/subset 2 1440 22002
+set type 1 type/subset 4 1440 44004
+set type 1 type/subset 5 1440 55005
+
+# Same Choi Co-Cr-Fe-Mn-Ni 2NN-MEAM files and mapping as before.
+# Type 3 is mapped to Fe but is intentionally unoccupied for this Fe0 alloy.
+pair_style meam
+pair_coeff * * library.meam Co Ni Cr Fe Mn CoNiCrFeMn.meam Co Cr Fe Mn Ni
+neighbor 2.0 bin
+neigh_modify delay 0 every 1 check yes
+
+variable epa equal pe/atoms
+variable hpa equal enthalpy/atoms
+variable vpa equal vol/atoms
+variable rho equal density
+variable Tinst equal temp
+variable Pinst equal press
+
+thermo 1000
+thermo_style custom step time temp press pe v_epa enthalpy v_hpa density vol v_vpa lx ly lz
+thermo_modify flush yes lost error
+
+write_data FCC_initial_random_5760_Co25Cr25Fe0Mn25Ni25.data
+
+# A. 0 K relaxation -- unchanged
+fix RELAX all box/relax aniso 0.0 vmax 0.001
+min_style cg
+minimize 1.0e-12 1.0e-12 20000 200000
+unfix RELAX
+run 0
+print "state,energy_eV_per_atom,enthalpy_eV_per_atom,volume_A3_per_atom,density_g_cm3" file FCC_main_summary.csv screen no
+print "FCC_0K_relaxed,$(v_epa:%.12f),$(v_hpa:%.12f),$(v_vpa:%.12f),$(v_rho:%.12f)" append FCC_main_summary.csv screen yes
+write_data FCC_relaxed_0K_5760_Co25Cr25Fe0Mn25Ni25.data
+
+# B. 1073 K canonical pair-swap MC/MD
+# Fe is absent, so only the six physically present element pairs are sampled.
+# Each fix attempts one swap every 6 MD steps. Over 10002 steps this gives
+# 1667 attempts per pair and 10002 total attempts, distributed equally.
+velocity all create 1073.0 847293 mom yes rot no dist gaussian
+fix NPTCMC all npt temp 1073.0 1073.0 0.1 aniso 0.0 0.0 1.0
+
+fix SW12 all atom/swap 6 1 11012 1073.0 ke yes types 1 2
+fix SW14 all atom/swap 6 1 11014 1073.0 ke yes types 1 4
+fix SW15 all atom/swap 6 1 11015 1073.0 ke yes types 1 5
+fix SW24 all atom/swap 6 1 11024 1073.0 ke yes types 2 4
+fix SW25 all atom/swap 6 1 11025 1073.0 ke yes types 2 5
+fix SW45 all atom/swap 6 1 11045 1073.0 ke yes types 4 5
+
+compute PEATOM all pe/atom
+dump DCMC all custom 1000 FCC_CMC_1073K.lammpstrj id type x y z c_PEATOM
+dump_modify DCMC sort id
+run 10002
+
+print "pair,attempts,accepted" file CMC_swap_statistics.csv screen no
+print "Co-Cr,$(f_SW12[1]:%.0f),$(f_SW12[2]:%.0f)" append CMC_swap_statistics.csv screen no
+print "Co-Mn,$(f_SW14[1]:%.0f),$(f_SW14[2]:%.0f)" append CMC_swap_statistics.csv screen no
+print "Co-Ni,$(f_SW15[1]:%.0f),$(f_SW15[2]:%.0f)" append CMC_swap_statistics.csv screen no
+print "Cr-Mn,$(f_SW24[1]:%.0f),$(f_SW24[2]:%.0f)" append CMC_swap_statistics.csv screen no
+print "Cr-Ni,$(f_SW25[1]:%.0f),$(f_SW25[2]:%.0f)" append CMC_swap_statistics.csv screen no
+print "Mn-Ni,$(f_SW45[1]:%.0f),$(f_SW45[2]:%.0f)" append CMC_swap_statistics.csv screen no
+
+unfix SW12
+unfix SW14
+unfix SW15
+unfix SW24
+unfix SW25
+unfix SW45
+undump DCMC
+unfix NPTCMC
+run 0
+print "FCC_after_CMC_1073K,$(v_epa:%.12f),$(v_hpa:%.12f),$(v_vpa:%.12f),$(v_rho:%.12f)" append FCC_main_summary.csv screen yes
+write_data FCC_CMC_1073K_5760_Co25Cr25Fe0Mn25Ni25.data
+write_restart FCC_CMC_1073K_5760_Co25Cr25Fe0Mn25Ni25.rst
+
+# C. Same seven-temperature ladder and 50 ps at each temperature -- unchanged
+print "temperature_K,energy_eV_per_atom,enthalpy_eV_per_atom,volume_A3_per_atom,density_g_cm3" file FCC_ladder_summary.csv screen no
+variable Tlist index 1073 1273 1473 1673 1873 2073 2273
+label LADDER
+variable Tnow equal ${Tlist}
+fix NPTL all npt temp ${Tnow} ${Tnow} 0.1 aniso 0.0 0.0 1.0
+fix AVGL all ave/time 100 500 50000 v_Tinst v_Pinst v_epa v_hpa v_vpa v_rho file FCC_${Tnow}K_average.dat
+dump DL all custom 5000 FCC_hot_${Tnow}K.lammpstrj id type x y z c_PEATOM
+dump_modify DL sort id
+run 50000
+unfix AVGL
+unfix NPTL
+undump DL
+run 0
+print "${Tnow},$(v_epa:%.12f),$(v_hpa:%.12f),$(v_vpa:%.12f),$(v_rho:%.12f)" append FCC_ladder_summary.csv screen yes
+write_data FCC_hot_${Tnow}K.data
+write_restart FCC_hot_${Tnow}K.rst
+next Tlist
+jump SELF LADDER
+
+print "Co25Cr25Fe0Mn25Ni25 FCC CMC AND TEMPERATURE LADDER COMPLETED"

@@ -1,0 +1,121 @@
+LAMMPS (30 Mar 2026)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread.
+  using 1 OpenMP thread(s) per MPI task
+Loaded 1 plugins from C:\Users\hp\AppData\Local\LAMMPS 64-bit 30Mar2026-MSMPI\plugins
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread.
+  using 1 OpenMP thread(s) per MPI task
+Restoring plugin: Hello world command v1.1 by Axel Kohlmeyer (akohlmey@gmail.com)
+WARNING: Overriding built-in command style hello from plugin (src/PLUGIN/plugin.cpp:556)
+Loaded 1 plugins from C:\Users\hp\AppData\Local\LAMMPS 64-bit 30Mar2026-MSMPI\plugins
+Reading data file ...
+  orthogonal box = (-0.25039694 -0.32361371 -0.23608973) to (43.390397 43.463614 36.18609)
+  2 by 3 by 1 MPI processor grid
+  reading atoms ...
+  5760 atoms
+  reading velocities ...
+  5760 velocities
+  read_data CPU = 0.061 seconds
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.5
+  ghost atom cutoff = 6.5
+  binsize = 3.25, bins = 14 14 12
+  2 neighbor lists, perpetual/occasional/extra = 2 0 0
+  (1) pair meam, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+  (2) pair meam, perpetual, half/full from (1)
+      attributes: half, newton on
+      pair build: halffull/newton
+      stencil: none
+      bin: none
+Setting up cg style minimization ...
+  Unit style    : metal
+  Current step  : 0
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+Per MPI rank memory allocation (min/avg/max) = 11.33 | 11.33 | 11.34 Mbytes
+   Step          Temp          Press          PotEng         v_epa         Enthalpy        v_hpa         Density         Volume         v_vpa            Lx             Ly             Lz      
+         0   0             -12178.896     -22070.873     -3.8317487     -22599.931     -3.9235991      7.7137644      69599.484      12.083244      43.640794      43.787227      36.422179    
+      1000   0             -670.12255     -22706.14      -3.9420381     -22734.287     -3.9469249      7.9776301      67297.432      11.683582      43.228928      43.279929      35.969756    
+      2000   0              8.4268702     -23052.867     -4.0022338     -23052.517     -4.0021731      8.0762759      66475.443      11.540876      43.048476      43.052515      35.867816    
+      3000   0              0.26461479    -23054.295     -4.0024818     -23054.284     -4.0024799      8.0764254      66474.213      11.540662      43.044846      43.05335       35.869481    
+      3560   0             -0.44672481    -23054.296     -4.0024819     -23054.314     -4.0024851      8.0764224      66474.237      11.540666      43.044818      43.053432      35.869449    
+Loop time of 129.285 on 6 procs for 3560 steps with 5760 atoms
+
+92.0% CPU use with 6 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+     -22070.8726605532  -23054.2955746669  -23054.2955746829
+  Force two-norm initial, final = 929.97999 0.053671037
+  Force max component initial, final = 597.20545 0.043290457
+  Final line search alpha, max atom move = 0.025714103 0.0011131753
+  Iterations, force evaluations = 3560 5895
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 118.28     | 118.85     | 119.52     |   3.4 | 91.93
+Neigh   | 0.002181   | 0.0029608  | 0.003422   |   1.0 |  0.00
+Comm    | 8.4991     | 9.1546     | 9.7107     |  11.9 |  7.08
+Output  | 0.000221   | 0.0002575  | 0.000427   |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.274      |            |       |  0.99
+
+Nlocal:            960 ave         973 max         946 min
+Histogram: 1 1 0 1 0 0 1 0 0 2
+Nghost:           2887 ave        2901 max        2874 min
+Histogram: 2 0 0 1 0 0 1 0 1 1
+Neighs:        42801.8 ave       43253 max       42285 min
+Histogram: 1 1 0 0 1 0 1 0 0 2
+FullNghs:      85603.7 ave       86828 max       83989 min
+Histogram: 1 0 1 0 0 1 1 0 0 2
+
+Total # of neighbors = 513622
+Ave neighs/atom = 89.170486
+Neighbor list builds = 1
+Dangerous builds = 0
+WARNING: No fixes with time integration, atoms won't move
+For more information see https://docs.lammps.org/err0028 (src/verlet.cpp:60)
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 3560
+  Time step     : 0.001
+Per MPI rank memory allocation (min/avg/max) = 10.21 | 10.22 | 10.23 Mbytes
+   Step          Temp          Press          PotEng         v_epa         Enthalpy        v_hpa         Density         Volume         v_vpa            Lx             Ly             Lz      
+      3560   0             -0.44672481    -23054.296     -4.0024819     -23054.314     -4.0024851      8.0764224      66474.237      11.540666      43.044818      43.053432      35.869449    
+Loop time of 2.83333e-06 on 6 procs for 0 steps with 5760 atoms
+
+0.0% CPU use with 6 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.833e-06  |            |       |100.00
+
+Nlocal:            960 ave         990 max         930 min
+Histogram: 1 0 1 1 0 0 1 1 0 1
+Nghost:           2887 ave        2917 max        2857 min
+Histogram: 1 0 1 1 0 0 1 1 0 1
+Neighs:        41287.7 ave       42718 max       39970 min
+Histogram: 1 0 2 0 0 0 2 0 0 1
+FullNghs:      82575.3 ave       85161 max       79999 min
+Histogram: 1 0 1 1 0 0 1 1 0 1
+
+Total # of neighbors = 495452
+Ave neighs/atom = 86.015972
+Neighbor list builds = 0
+Dangerous builds = 0
+1273,-4.002481870605,-4.002485088416,11.540666227518,8.076422383612
+System init for write_data ...
+Total wall time: 0:02:09
