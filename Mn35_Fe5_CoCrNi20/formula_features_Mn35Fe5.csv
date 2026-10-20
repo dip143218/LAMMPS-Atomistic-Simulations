@@ -1,0 +1,10 @@
+feature,value,unit,source
+composition,Co20Cr20Fe5Mn35Ni20,label,direct input
+Sconf_over_R,1.482887104712697,dimensionless,direct formula
+Sconf,12.329409398847972,J/mol/K,direct formula
+mean_atomic_radius,138.0,pm,weighted property formula
+atomic_size_difference_delta,1.7749925672341893,%,direct formula
+Lambda,0.47066836703580883,dimensionless,direct formula
+mean_melting_point,1757.4,K,weighted property formula; not LAMMPS
+mean_elemental_density,7.9168,g/cm3,weighted property formula; not relaxed LAMMPS density
+VEC,7.85,dimensionless,weighted property formula

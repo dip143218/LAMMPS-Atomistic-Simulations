@@ -1,0 +1,17 @@
+STATIC RECHECK: Co20Cr20Fe5Mn35Ni20
+Atom total: 1152 + 1152 + 288 + 2016 + 1152 = 5760
+PASS: Cr subset 1152
+PASS: Fe subset 288
+PASS: Mn subset 2016
+PASS: Ni subset 1152
+PASS: same MEAM pair coeff
+PASS: CMC run 10000
+PASS: temperature list
+PASS: ladder run 50000
+PASS: correct HCP 12x12x10
+PASS: correct BCC 12x12x20
+PASS: 6 MPI ranks
+PASS: batch main filename
+PASS: batch phase filename
+PASS: Python scripts compile
+NOTE: Full multi-hour LAMMPS run was not executed in this environment.

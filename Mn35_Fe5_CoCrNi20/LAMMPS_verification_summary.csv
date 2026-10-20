@@ -1,0 +1,10 @@
+metric,value,unit
+Sconf_over_R,1.482887104713,dimensionless
+Sconf,12.329409398848,J/mol/K
+alloy_energy_FCC_relaxed,-3.863606908937,eV/atom
+DeltaHmix_elemental_reference,-4.115859193549,kJ/mol
+DeltaHmix_FCC_reference,-5.753359095444,kJ/mol
+lowest_ideal_phase,HCP,label
+phase_gap_to_second,6.444223805000,meV/atom
+lowest_quench_source_temperature,1273,K
+lowest_quenched_energy,-3.875188757808,eV/atom
