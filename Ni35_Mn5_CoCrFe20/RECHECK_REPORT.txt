@@ -1,0 +1,32 @@
+NI35 MN5 PACKAGE RECHECK
+
+Target composition: Co20 Cr20 Fe20 Mn5 Ni35
+Atom counts: Co 1152, Cr 1152, Fe 1152, Mn 288, Ni 2016, total 5760
+
+PASS  Main total atoms
+PASS  Co count 1152
+PASS  Fe count 1152
+PASS  Mn count 288
+PASS  Ni count 2016
+PASS  Pair coefficient unchanged main
+PASS  Pair coefficient unchanged phase
+PASS  Pair coefficient unchanged quench
+PASS  CMC run 10000
+PASS  All ten swap fixes
+PASS  Temperature list unchanged
+PASS  Ladder run unchanged
+PASS  HCP box gives 5760
+PASS  Quench byte-identical to previous
+
+OVERALL: PASS
+
+SHA256 checksums:
+11d8c6a2ca849ead980585c8acca1b56088b8d88ee006c6127d09f57b20d5aea  CoNiCrFeMn.meam
+f2ed67ace70421e7b5f00ffb741a14175f0ed55207d30fc3f3346de6b095ff04  README_RUN_AND_VERIFY.txt
+9073246332fc279a0849dc85e6f0c7015074b802a7c3a950ade1d6b5019ee176  RUN_ALL_6CORE_Ni35_Mn5.bat
+ac7f7624fc95c0f7cf32ae8ad11f2083672a69cabd8b74fddbc64aa8d2a2eefc  analyze_phase_fractions_ovito.py
+3948e51e15f706e29bd8fee24944a9043be418b611ad8748e7efcc2d8df6f1cb  library.meam
+1913db304689cb70336e52f4f9e63776e7afb24e5dc51f37e8c91f1511c53541  phase_energy_5760_Ni35_Mn5.in
+c9cab6e09537a0cfeaf87e6e548325ce5b15a51b80aa3669d0784578b7abb5e4  quench_one_temperature.in
+b955c53cf482a8930fb1a14d4498acfe18ede7fbb61dd052d15d61f5b140394f  run_FCC_Choi_5760_Ni35_Mn5.in
+743a772bd5a4dae56b64167511347b017ee07dc44c09ad432a23cefb07af3cdf  verify_lammps_results.py

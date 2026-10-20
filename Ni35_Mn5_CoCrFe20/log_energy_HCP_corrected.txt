@@ -1,0 +1,133 @@
+LAMMPS (30 Mar 2026)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread.
+  using 1 OpenMP thread(s) per MPI task
+Loaded 1 plugins from C:\Users\hp\AppData\Local\LAMMPS 64-bit 30Mar2026-MSMPI\plugins
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread.
+  using 1 OpenMP thread(s) per MPI task
+Restoring plugin: Hello world command v1.1 by Axel Kohlmeyer (akohlmey@gmail.com)
+WARNING: Overriding built-in command style hello from plugin (src/PLUGIN/plugin.cpp:556)
+Loaded 1 plugins from C:\Users\hp\AppData\Local\LAMMPS 64-bit 30Mar2026-MSMPI\plugins
+Lattice spacing in x,y,z = 2.542 4.4028732 4.1510686
+Created orthogonal box = (0 0 0) to (30.504 52.834478 41.510686)
+  1 by 3 by 2 MPI processor grid
+Created 5760 atoms
+  using lattice units in orthogonal box = (0 0 0) to (30.504 52.834478 41.510686)
+  create_atoms CPU = 0.004 seconds
+Setting atom values ...
+  1152 settings made for type/subset
+Setting atom values ...
+  1152 settings made for type/subset
+Setting atom values ...
+  288 settings made for type/subset
+Setting atom values ...
+  2016 settings made for type/subset
+System init for write_data ...
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.5
+  ghost atom cutoff = 6.5
+  binsize = 3.25, bins = 10 17 13
+  2 neighbor lists, perpetual/occasional/extra = 2 0 0
+  (1) pair meam, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+  (2) pair meam, perpetual, half/full from (1)
+      attributes: half, newton on
+      pair build: halffull/newton
+      stencil: none
+      bin: none
+Setting up cg style minimization ...
+  Unit style    : metal
+  Current step  : 0
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+Per MPI rank memory allocation (min/avg/max) = 11.54 | 11.54 | 11.54 Mbytes
+   Step          Temp          Press          PotEng         v_epa         Enthalpy        v_hpa         Density         Volume         v_vpa            Lx             Ly             Lz      
+         0   0             -33157.679     -24506.747     -4.2546435     -25891.294     -4.4950164      8.0971806      66901.233      11.614797      30.504         52.834478      41.510686    
+       100   0              292.97855     -24548.814     -4.2619468     -24536.798     -4.2598607      8.2439985      65709.785      11.407949      30.350277      52.585588      41.171876    
+       200   0              111.44297     -24551.641     -4.2624377     -24547.069     -4.261644       8.2412515      65731.687      11.411751      30.346236      52.609657      41.172238    
+       300   0             -4.9809676     -24551.676     -4.2624437     -24551.88      -4.2624792      8.2408543      65734.856      11.412301      30.349905      52.60017       41.17667     
+       400   0              3.2854535     -24551.681     -4.2624446     -24551.546     -4.2624212      8.240893       65734.547      11.412248      30.349524      52.601127      41.176245    
+       500   0             -0.56703673    -24551.684     -4.2624451     -24551.707     -4.2624492      8.240881       65734.643      11.412264      30.349529      52.601167      41.176267    
+       600   0             -17.049202     -24551.686     -4.2624454     -24552.385     -4.2625669      8.2408111      65735.2        11.412361      30.34942       52.601378      41.1766      
+       700   0              10.919197     -24551.687     -4.2624456     -24551.239     -4.2623678      8.2409314      65734.241      11.412195      30.349689      52.601282      41.175708    
+       758   0              0.34238522    -24551.687     -4.2624457     -24551.673     -4.2624433      8.2408805      65734.647      11.412265      30.349476      52.601261      41.176267    
+Loop time of 270.162 on 6 procs for 758 steps with 5760 atoms
+
+25.4% CPU use with 6 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+     -24506.7467363037  -24551.6873300805  -24551.6873300889
+  Force two-norm initial, final = 2401.7834 0.038767973
+  Force max component initial, final = 1491.3521 0.017556734
+  Final line search alpha, max atom move = 0.027520976 0.00048317846
+  Iterations, force evaluations = 758 1492
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 193.17     | 194.45     | 195.14     |   5.2 | 71.97
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 33.904     | 34.861     | 35.354     |   8.6 | 12.90
+Output  | 0.30216    | 0.31857    | 0.34879    |   2.9 |  0.12
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 40.54      |            |       | 15.00
+
+Nlocal:            960 ave         960 max         960 min
+Histogram: 6 0 0 0 0 0 0 0 0 0
+Nghost:           3061 ave        3061 max        3061 min
+Histogram: 6 0 0 0 0 0 0 0 0 0
+Neighs:          44160 ave       44160 max       44160 min
+Histogram: 6 0 0 0 0 0 0 0 0 0
+FullNghs:        88320 ave       88320 max       88320 min
+Histogram: 6 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 529920
+Ave neighs/atom = 92
+Neighbor list builds = 0
+Dangerous builds = 0
+WARNING: No fixes with time integration, atoms won't move
+For more information see https://docs.lammps.org/err0028 (src/verlet.cpp:60)
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 758
+  Time step     : 0.001
+Per MPI rank memory allocation (min/avg/max) = 10.43 | 10.45 | 10.49 Mbytes
+   Step          Temp          Press          PotEng         v_epa         Enthalpy        v_hpa         Density         Volume         v_vpa            Lx             Ly             Lz      
+       758   0              0.34238522    -24551.687     -4.2624457     -24551.673     -4.2624433      8.2408805      65734.647      11.412265      30.349476      52.601261      41.176267    
+Loop time of 2e-05 on 6 procs for 0 steps with 5760 atoms
+
+0.0% CPU use with 6 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2e-05      |            |       |100.00
+
+Nlocal:            960 ave         986 max         946 min
+Histogram: 2 1 0 1 0 1 0 0 0 1
+Nghost:           3066 ave        3079 max        3044 min
+Histogram: 1 0 0 0 1 0 0 1 2 1
+Neighs:        45689.7 ave       47100 max       44896 min
+Histogram: 2 1 0 0 1 1 0 0 0 1
+FullNghs:      91379.3 ave       93998 max       89914 min
+Histogram: 2 1 0 1 0 1 0 0 0 1
+
+Total # of neighbors = 548276
+Ave neighs/atom = 95.186806
+Neighbor list builds = 0
+Dangerous builds = 0
+HCP,-4.262445717029,-4.262443278228,11.412265024481,8.240880526285
+System init for write_data ...
+CORRECTED 5760-ATOM Ni35Mn5 HCP ENERGY SCREEN COMPLETED
+Total wall time: 0:04:30
