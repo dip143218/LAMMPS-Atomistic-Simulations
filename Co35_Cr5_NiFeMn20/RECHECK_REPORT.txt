@@ -1,0 +1,18 @@
+PASS: Co remaining 2016
+PASS: type 2 288
+PASS: type 3 1152
+PASS: type 4 1152
+PASS: type 5 1152
+PASS: same pair_coeff 
+PASS: CMC 10000 
+PASS: ladder 
+PASS: 50 ps each 
+PASS: 10 swap fixes 10
+PASS: HCP corrected 5760 box 
+PASS: FCC box 
+PASS: BCC box 
+PASS: 6 cores 3
+PASS: no PowerShell in batch 
+PASS: stderr captured 3
+
+OVERALL: PASS
