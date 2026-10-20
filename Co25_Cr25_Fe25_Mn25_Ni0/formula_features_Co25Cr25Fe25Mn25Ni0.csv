@@ -1,0 +1,11 @@
+feature,value,unit,source
+composition,Co25Cr25Fe25Mn25Ni0,label,direct input
+active_element_count,4,count,Ni fraction is zero
+Sconf_over_R,1.3862943611198906,dimensionless,"-sum(ci ln ci), excluding zero fractions"
+Sconf,11.526292643075523,J/mol/K,configurational entropy
+mean_atomic_radius,138.75,pm,composition-weighted property
+atomic_size_difference_delta,1.5604061329449281,%,direct formula
+Lambda,0.5693510941119437,dimensionless,Sconf/R divided by delta squared
+mean_melting_point,1819.5,K,weighted elemental descriptor; not simulated melting
+mean_elemental_density,7.7935,g/cm3,weighted elemental descriptor; compare with relaxed LAMMPS density
+VEC,7.5,dimensionless,composition-weighted property
