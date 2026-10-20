@@ -1,0 +1,29 @@
+Co0Cr25Fe25Mn25Ni25 package static recheck
+
+PASS: library.meam exists
+PASS: CoNiCrFeMn.meam exists
+PASS: library.meam checksum matches the supplied Choi file
+PASS: CoNiCrFeMn.meam checksum matches the supplied file
+PASS: main MEAM mapping is unchanged
+PASS: phase-screen MEAM mapping is unchanged
+PASS: Cr atom count is 1440
+PASS: Fe atom count is 1440
+PASS: Mn atom count is 1440
+PASS: Ni atom count is 1440
+PASS: all 5760 original Co atoms are converted to Cr/Fe/Mn/Ni
+PASS: composition comment confirms 5760 total atoms
+PASS: six present-element pair-swap fixes use equal sampling
+PASS: no invalid Co-involving swap fixes
+PASS: CMC block gives 1667 attempts per pair and 10002 total attempts
+PASS: seven-temperature ladder is unchanged
+PASS: 50 ps per ladder temperature is unchanged
+PASS: HCP screen creates 5760 atoms
+PASS: BCC screen creates 5760 atoms
+PASS: batch uses 6 MPI processes
+PASS: no melting workflow is included
+PASS: Python syntax: calculate_formula_features.py
+PASS: Python syntax: verify_lammps_results.py
+PASS: Python syntax: build_app_feature_report.py
+PASS: Python syntax: analyze_phase_fractions_ovito.py
+
+OVERALL: PASS
