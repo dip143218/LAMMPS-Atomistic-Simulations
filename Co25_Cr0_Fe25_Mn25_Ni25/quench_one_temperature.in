@@ -1,0 +1,26 @@
+clear
+units metal
+dimension 3
+boundary p p p
+atom_style atomic
+variable TK index 1073
+read_data FCC_hot_${TK}K.data
+pair_style meam
+pair_coeff * * library.meam Co Ni Cr Fe Mn CoNiCrFeMn.meam Co Cr Fe Mn Ni
+neighbor 2.0 bin
+neigh_modify delay 0 every 1 check yes
+variable epa equal pe/atoms
+variable hpa equal enthalpy/atoms
+variable vpa equal vol/atoms
+variable rho equal density
+thermo 1000
+thermo_style custom step temp press pe v_epa enthalpy v_hpa density vol v_vpa lx ly lz
+thermo_modify flush yes lost error
+velocity all set 0.0 0.0 0.0
+fix RELAX all box/relax aniso 0.0 vmax 0.001
+min_style cg
+minimize 1.0e-12 1.0e-12 20000 200000
+unfix RELAX
+run 0
+print "${TK},$(v_epa:%.12f),$(v_hpa:%.12f),$(v_vpa:%.12f),$(v_rho:%.12f)" append FCC_quench_0K_summary.csv screen yes
+write_data FCC_quenched_0K_from_${TK}K.data
