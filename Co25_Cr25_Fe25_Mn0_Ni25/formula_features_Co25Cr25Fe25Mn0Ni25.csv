@@ -1,0 +1,11 @@
+feature,value,unit,source
+composition,Co25Cr25Fe25Mn0Ni25,label,direct input
+active_element_count,4,count,Mn fraction is zero
+Sconf_over_R,1.3862943611198906,dimensionless,"direct formula, zero-fraction Mn omitted"
+Sconf,11.526292643075523,J/mol/K,direct formula
+mean_atomic_radius,137.5,pm,weighted property formula
+atomic_size_difference_delta,1.8181818181818132,%,direct formula
+Lambda,0.4193540442387692,dimensionless,direct formula
+mean_melting_point,1871.75,K,weighted property formula; not LAMMPS melting
+mean_elemental_density,8.218,g/cm3,weighted property formula; not relaxed LAMMPS density
+VEC,8.25,dimensionless,weighted descriptor
